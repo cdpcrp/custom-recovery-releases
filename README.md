@@ -1,5 +1,5 @@
 ## Notes
-- Always read the informations/instruction in the [Download Page](https://github.com/cd-Crypton/custom-recovery-releases/releases).
+- Always read the informations/instruction in the [Download Page](https://github.com/cd-Crypton/custom-recovery-releases/releases) and search for the device you need..
 
 ## Devices Available
 - ROG Phone 6 (AI2201), SHRP and PBRP
