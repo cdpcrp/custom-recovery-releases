@@ -7,3 +7,4 @@
 - Realme 8 4G (nashc), TWRP, PBRP and OFRP
 - Redmi Note 9T (cannong), TWRP, PBRP and OFRP
 - Realme 9 4G (messi), TWRP, OFRP
+- Nokia 5.3 (CAP_sprout) TWRP
