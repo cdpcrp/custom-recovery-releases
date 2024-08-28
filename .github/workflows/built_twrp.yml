@@ -166,6 +166,5 @@ jobs:
         files: |
           twrp/out/target/product/${{ inputs.DEVICE_NAME }}/twrp-${{ github.run_id }}-${{ env.DEVICE_BUILD }}
         name: Release Build for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
-        prerelease: true
         tag_name: ${{ github.run_id }}
         body_path: changelog.txt
