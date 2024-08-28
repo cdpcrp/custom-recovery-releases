@@ -13,7 +13,6 @@ on:
         - messi
         - X6710
         - golf
-        - AI2201
         - nashc
         - cap_sprout
 
@@ -91,14 +90,6 @@ jobs:
           echo "DEVICE_PATH=device/infinix/X6710" >> $GITHUB_ENV
           echo "DEVICE_TARGET=vendorbootimage" >> $GITHUB_ENV
           echo "DEVICE_BUILD=vendor_boot.img" >> $GITHUB_ENV
-        fi
-        if [ "${{ inputs.DEVICE_NAME }}" == "AI2201" ]; then
-          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_asus_AI2201" >> $GITHUB_ENV
-          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
-          echo "DEVICE_LUNCH=twrp_AI2201-eng" >> $GITHUB_ENV
-          echo "DEVICE_PATH=device/asus/AI2201" >> $GITHUB_ENV
-          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
-          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
         fi
         if [ "${{ inputs.DEVICE_NAME }}" == "golf" ]; then
           echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_realme_golf" >> $GITHUB_ENV
