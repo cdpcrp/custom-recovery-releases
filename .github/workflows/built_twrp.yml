@@ -74,7 +74,7 @@ jobs:
           echo "DEVICE_LUNCH=twrp_cannong-eng" >> $GITHUB_ENV
           echo "DEVICE_PATH=device/xiaomi/cannong" >> $GITHUB_ENV
           echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
-          echo "DEVICE_BUILD=recovery.img"
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
         fi
         if [ "${{ inputs.DEVICE_NAME }}" == "messi" ]; then
           echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_realme_messi" >> $GITHUB_ENV
@@ -82,7 +82,7 @@ jobs:
           echo "DEVICE_LUNCH=twrp_messi-eng" >> $GITHUB_ENV
           echo "DEVICE_PATH=device/realme/messi" >> $GITHUB_ENV
           echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
-          echo "DEVICE_BUILD=recovery.img"
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
         fi
         if [ "${{ inputs.DEVICE_NAME }}" == "X6710" ]; then
           echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_infinix_X6710" >> $GITHUB_ENV
@@ -90,7 +90,7 @@ jobs:
           echo "DEVICE_LUNCH=twrp_X6710-eng" >> $GITHUB_ENV
           echo "DEVICE_PATH=device/infinix/X6710" >> $GITHUB_ENV
           echo "DEVICE_TARGET=vendorbootimage" >> $GITHUB_ENV
-          echo "DEVICE_BUILD=vendor_boot.img"
+          echo "DEVICE_BUILD=vendor_boot.img" >> $GITHUB_ENV
         fi
         if [ "${{ inputs.DEVICE_NAME }}" == "AI2201" ]; then
           echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_asus_AI2201" >> $GITHUB_ENV
