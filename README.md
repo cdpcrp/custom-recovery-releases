@@ -1,12 +1,12 @@
 ## Custom Recovery Release
 Always read the informations/instructions are in the release section, make sure to properly read that.
 ### Devices Available
-- Realme 9i 4G (golf)
-- Realme 8 4G (nashc)
-- Redmi Note 9T (cannong)
-- Realme 9 4G (messi)
-- Nokia 5.3 (cap_sprout)
-- Infinix Note 30 VIP (X6710)
+- Realme 9i 4G (golf) - [golf2-twrp-001](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/golf2-twrp-001)
+- Realme 8 4G (nashc) - [nashc-twrp-001](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/nashc-twrp-001)
+- Redmi Note 9T (cannong) - [cannong-twrp-002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/cannong-twrp-002)
+- Realme 9 4G (messi) - [messi-twrp-004](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/messi-twrp-004)
+- Nokia 5.3 (cap_sprout) - [cap_sprout-twrp-002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/cap_sprout-twrp-002)
+- Infinix Note 30 VIP (X6710) - [X6710-A14_0002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/X6710-A14_0002)
 ### On Hold
 - ROG Phone 6 (AI2201)
 ### Notes
