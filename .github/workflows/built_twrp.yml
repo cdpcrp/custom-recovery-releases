@@ -1,0 +1,171 @@
+name: TWRP
+
+on:
+  workflow_dispatch:
+    inputs:
+      DEVICE_NAME:
+        description: 'Target Device Name'
+        required: true
+        default: ''
+        type: choice
+        options:
+        - cannong
+        - messi
+        - X6710
+        - golf
+        - AI2201
+        - nashc
+        - cap_sprout
+
+jobs:
+  build:
+    name: Build TWRP by ${{ github.actor }}
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+    - name: Check Out
+      uses: actions/checkout@v4
+
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+
+    - name: Set Swap Space
+      uses: pierotofy/set-swap-space@master
+      with:
+        swap-size-gb: 24
+
+    - name: Prepare the environment
+      run: |
+        sudo apt update
+        sudo apt -y upgrade
+        sudo apt -y install gperf gcc-multilib gcc-10-multilib g++-multilib g++-10-multilib libc6-dev lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc bc ccache lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libwxgtk3.0-gtk3-dev libxml2 lzop pngcrush schedtool squashfs-tools imagemagick libbz2-dev lzma ncftp qemu-user-static libstdc++-10-dev libtinfo5 libgflags-dev
+        sudo add-apt-repository universe
+        sudo apt -y install libncurses5
+
+    - name: Install OpenJDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '8'
+
+    - name: Install Git-Repo
+      run: |
+        mkdir ~/bin
+        curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+        chmod a+x ~/bin/repo
+        sudo ln -sf ~/bin/repo /usr/bin/repo
+
+    - name: Initialize Repo
+      run: |
+        mkdir twrp
+        cd twrp
+        git config --global user.name "Carlo Dee"
+        git config --global user.email "carlodee.official@proton.me"
+        repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+        sed -i '/<remove-project name="platform\/external\/gflags"  \/>/d' .repo/manifests/remove-minimal.xml
+        repo sync -j$(nproc --all) --force-sync
+
+    - name: Decide Recovery Tree
+      run: |
+        if [ "${{ inputs.DEVICE_NAME }}" == "cannong" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_xiaomi_cannong" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_cannong-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/xiaomi/cannong" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img"
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "messi" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_realme_messi" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_messi-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/realme/messi" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img"
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "X6710" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_infinix_X6710" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-14" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_X6710-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/infinix/X6710" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=vendorbootimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=vendor_boot.img"
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "AI2201" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_asus_AI2201" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_AI2201-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/asus/AI2201" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "golf" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_realme_golf" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_golf-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/realme/golf" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "nashc" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_realme_nashc" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_nashc-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/realme/nashc" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "cap_sprout" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_nokia_cap_sprout" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=cap_sprout-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/nokia/cap_sprout" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
+        fi
+
+    - name: Clone Device Tree
+      run: |
+        cd twrp
+        git clone --depth=1 --single-branch ${{ env.DEVICE_TREE }} -b ${{ env.DEVICE_BRANCH }} ./${{ env.DEVICE_PATH }}
+        cd ${{ env.DEVICE_PATH }}
+        echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+    - name: Building Image
+      run: |
+        cd twrp
+        source build/envsetup.sh
+        export ALLOW_MISSING_DEPENDENCIES=true
+        lunch ${{ env.DEVICE_LUNCH }} && make clean && mka ${{ env.DEVICE_TARGET }}
+        cd out/target/product/${{ inputs.DEVICE_NAME }}
+        mv ${{ env.DEVICE_BUILD }} twrp-${{ github.run_id }}-${{ env.DEVICE_BUILD }}
+        echo "Done building your twrp-${{ github.run_id }}-${{ env.DEVICE_BUILD }}"
+
+    - name: Set Properties
+      run: |
+        echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+        echo -e \
+        "
+        ## Unofficial TWRP Build Release
+        _Note: Flash at your own risk. This build were still in the process of testing. And please, only flash this on Android 14 (recovery-as-vendor_boot, header v3)._
+        ### Notes
+        * To be edited...
+        ### How to Install
+        * To be edited...
+        ### Resources
+        * [TWRP Manifest](https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp/tree/twrp-12.1)
+        * [Device Tree](${{ env.DEVICE_TREE }}/tree/${{ env.DEVICE_BRANCH }})
+        ### Credits
+        * To be edited...
+        " > changelog.txt
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          twrp/out/target/product/${{ inputs.DEVICE_NAME }}/twrp-${{ github.run_id }}-${{ env.DEVICE_BUILD }}
+        name: Release Build for ${{ inputs.DEVICE_NAME }} // ${{ env.BUILD_DATE }}
+        prerelease: true
+        tag_name: ${{ github.run_id }}
+        body_path: changelog.txt
