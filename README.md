@@ -1,7 +1,7 @@
 ## Custom Recovery Release
-Always read the informations/instruction in the [Download Page](https://github.com/cdpcrp/custom-recovery-releases/releases) and search for the device you need.
+Always read the informations/instructions are in the release section, make sure to properly read that.
 ### Devices Available
-- ROG Phone 6 (AI2201)
+- ROG Phone 6 (AI2201) 
 - Realme 9i 4G (golf)
 - Realme 8 4G (nashc)
 - Redmi Note 9T (cannong)
