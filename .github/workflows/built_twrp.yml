@@ -15,6 +15,7 @@ on:
         - golf
         - nashc
         - cap_sprout
+        - CK8n
 
 jobs:
   build:
@@ -114,6 +115,14 @@ jobs:
           echo "DEVICE_PATH=device/nokia/cap_sprout" >> $GITHUB_ENV
           echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
           echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "CK8n" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_tecno_CK8n" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-12.1" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_CK8n-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/tecno/CK8n" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=bootimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=boot.img" >> $GITHUB_ENV
         fi
 
     - name: Clone Device Tree
