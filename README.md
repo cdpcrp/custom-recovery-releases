@@ -8,3 +8,4 @@
 - Redmi Note 9T (cannong), TWRP, PBRP and OFRP
 - Realme 9 4G (messi), TWRP, OFRP
 - Nokia 5.3 (CAP_sprout) TWRP
+- Infinix Note 30 VIP (X6710), TWRP
