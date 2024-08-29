@@ -7,6 +7,7 @@ Always read the informations/instructions are in the release section, make sure 
 - Realme 9 4G (messi) - [messi-twrp-004](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/messi-twrp-004)
 - Nokia 5.3 (cap_sprout) - [cap_sprout-twrp-002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/cap_sprout-twrp-002)
 - Infinix Note 30 VIP (X6710) - [X6710-A14_0002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/X6710-A14_0002)
+- Tecno Camon 20 Pro (CK8n) - [ck8n-twrp-001](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/ck8n-twrp-001)
 ### On Hold
 - ROG Phone 6 (AI2201)
 ### Notes
