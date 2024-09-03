@@ -8,6 +8,7 @@ Always read the informations/instructions are in the release section, make sure 
 - Nokia 5.3 (cap_sprout) - [cap_sprout-twrp-002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/cap_sprout-twrp-002)
 - Infinix Note 30 VIP (X6710) - [X6710-A14_0002](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/X6710-A14_0002)
 - Tecno Camon 20 Pro (CK8n) - [CK8n-A14-CD_0001](https://github.com/cdpcrp/custom-recovery-releases/releases/tag/CK8n-A14-CD_0001)
+- Samsung Galaxy A55 5G
 ### On Hold
 - ROG Phone 6 (AI2201)
 ### Notes

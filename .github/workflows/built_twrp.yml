@@ -16,6 +16,7 @@ on:
         - nashc
         - cap_sprout
         - CK8n
+        - a55x
 
 jobs:
   build:
@@ -121,6 +122,14 @@ jobs:
           echo "DEVICE_BRANCH=twrp-14" >> $GITHUB_ENV
           echo "DEVICE_LUNCH=twrp_CK8n-eng" >> $GITHUB_ENV
           echo "DEVICE_PATH=device/tecno/CK8n" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=vendorbootimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=vendor_boot.img" >> $GITHUB_ENV
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "a55x" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_samsung_a55x" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=twrp-14" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=twrp_a55x-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/samsung/a55x" >> $GITHUB_ENV
           echo "DEVICE_TARGET=vendorbootimage" >> $GITHUB_ENV
           echo "DEVICE_BUILD=vendor_boot.img" >> $GITHUB_ENV
         fi
