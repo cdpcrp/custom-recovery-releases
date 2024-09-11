@@ -17,6 +17,7 @@ on:
         - cap_sprout
         - CK8n
         - a55x
+        - ASUS_AI2205
 
 jobs:
   build:
@@ -130,6 +131,14 @@ jobs:
           echo "DEVICE_PATH=device/samsung/a55x" >> $GITHUB_ENV
           echo "DEVICE_TARGET=vendorbootimage" >> $GITHUB_ENV
           echo "DEVICE_BUILD=vendor_boot.img" >> $GITHUB_ENV
+        fi
+        if [ "${{ inputs.DEVICE_NAME }}" == "ASUS_AI2205" ]; then
+          echo "DEVICE_TREE=https://github.com/cdpcrp/custom_recovery_tree_asus_ASUS_AI2205" >> $GITHUB_ENV
+          echo "DEVICE_BRANCH=android-13" >> $GITHUB_ENV
+          echo "DEVICE_LUNCH=ASUS_AI2205-eng" >> $GITHUB_ENV
+          echo "DEVICE_PATH=device/asus/ASUS_AI2205" >> $GITHUB_ENV
+          echo "DEVICE_TARGET=recoveryimage" >> $GITHUB_ENV
+          echo "DEVICE_BUILD=recovery.img" >> $GITHUB_ENV
         fi
 
     - name: Clone Device Tree
